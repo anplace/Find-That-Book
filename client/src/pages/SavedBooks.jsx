@@ -1,16 +1,16 @@
 import { Container, Card, Button, Row, Col } from 'react-bootstrap';
 import { useQuery, useMutation } from '@apollo/client';
-import { getMe, deleteBook } from '../graphQL/queries'; 
+import { get_Me, delete_Book } from '../graphQL/queries'; 
 import Auth from '../utils/auth';
 import { removeBookId } from '../utils/localStorage';
 
 const SavedBooks = () => {
 
-  const { data, loading, error, refetch } = useQuery(GET_ME, {
+  const { data, loading, error, refetch } = useQuery(get_Me, {
     skip: !Auth.loggedIn(),
   });
 
-  const [deleteBook] = useMutation(DELETE_BOOK, {
+  const [deleteBook] = useMutation(delete_Book, {
     onCompleted: () => refetch(), 
   });
 
